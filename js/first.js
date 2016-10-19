@@ -22,7 +22,7 @@ function Column (name) {
 		var $columnTitle = $('<h2>').addClass('column-title').text(self.name);
 		var $columnCardList = $('<ul>').addClass('column-card-list');
 		var $columnDelete = $('<button>').addClass('btn-delete').text('x');
-		var $columnAddCard = $('<button>').addClass('add-card').text('Dodaj kartę');
+		var $columnAddCard = $('<button>').addClass('add-card').text('+');
 		
 		$columnDelete.click(function () {
 			self.removeColumn();
@@ -79,7 +79,7 @@ Card.prototype = {
 };
 
 var board = {
-	name: 'Tablica Kanban',
+	name: 'Tablica Zadań',
 	addColumn: function(column) {
 		this.$element.append(column.$element);
 		initSortable();
