@@ -110,7 +110,11 @@ board.addColumn(doneColumn);
 
 var card1 = new Card('Nowe zadanie');
 var card2 = new Card('Stworzyc tablice kanban');
+var card3 = new Card('Wysłać kanbana do sprawdzenia');
+var card4 = new Card('Mentorze czy Kanban działa i wygląda dobrze ?');
 
 todoColumn.addCard(card1);
 doingColumn.addCard(card2);
+doneColumn.addCard(card3);
+doneColumn.addCard(card4);
 
