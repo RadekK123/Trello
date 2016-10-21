@@ -1,6 +1,5 @@
 // javascript files
 
-
 function randomString () {
 	var chars = '0123456789abcdefghiklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXTZ';
 	var str = '';
@@ -21,8 +20,17 @@ function Column (name) {
 		var $column = $('<div>').addClass('column');
 		var $columnTitle = $('<h2>').addClass('column-title').text(self.name);
 		var $columnCardList = $('<ul>').addClass('column-card-list');
-		var $columnDelete = $('<button>').addClass('btn-delete').text('x');
-		var $columnAddCard = $('<button>').addClass('add-card').text('+');
+		var $columnDelete = $('<button>').addClass('btn-delete').attr({
+
+			'data-toggle' : 'tooltip',
+			'data-placement' :'top',
+			title: 'Usuń kolumnę' }).text('x');
+
+		var $columnAddCard = $('<button>').addClass('add-card').attr({
+
+			'data-toggle' : 'tooltip',
+			'data-placement' :'top',
+			title: 'Dodaj kartę' }).text('+');
 		
 		$columnDelete.click(function () {
 			self.removeColumn();
@@ -59,8 +67,16 @@ function Card(description) {
 
 	function createCard () {
 		var $card = $('<li>').addClass('card');
+
 		var $cardDescription = $('<p>').addClass('card-description').text(self.description);
-		var $cardDelete = $('<button>').addClass('btn-delete').text('x');
+
+		var $cardDelete = $('<button>').addClass('btn-delete').attr({
+
+			'data-toggle' : 'tooltip',
+			'data-placement' :'right',
+			title: 'Usuń kartę'
+
+		}).text('x');
 	
 		$cardDelete.click(function () {
 			self.removeCard();
@@ -117,4 +133,8 @@ todoColumn.addCard(card1);
 doingColumn.addCard(card2);
 doneColumn.addCard(card3);
 doneColumn.addCard(card4);
+
+$('[data-toggle="tooltip"]').tooltip();
+
+
 
