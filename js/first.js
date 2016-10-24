@@ -34,12 +34,12 @@ function Column (name) {
 		
 		$columnDelete.click(function () {
 			self.removeColumn();
-			$('[data-toggle="tooltip"]').tooltip();
+			activateTooltip ();
 		});
 
 		$columnAddCard.click(function () {
 			self.addCard(new Card(prompt('Wpisz nazwę karty')));
-			$('[data-toggle="tooltip"]').tooltip();
+			activateTooltip ();
 		});
 
 		$column.append($columnTitle)
@@ -117,7 +117,7 @@ $('.create-column').click(function () {
 	var name = prompt('Wpisz nazwę kolumny');
 	var column = new Column(name);
 	board.addColumn(column);
-	$('[data-toggle="tooltip"]').tooltip();
+	activateTooltip ();
 });
 
 var todoColumn = new Column('Do zrobienia');
@@ -138,7 +138,10 @@ doingColumn.addCard(card2);
 doneColumn.addCard(card3);
 doneColumn.addCard(card4);
 
-$('[data-toggle="tooltip"]').tooltip();
+function activateTooltip () {
+	$('[data-toggle="tooltip"]').tooltip();
+}
+activateTooltip();
 
 
 
