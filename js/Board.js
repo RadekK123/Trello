@@ -13,6 +13,7 @@ $('.create-column')
         var columnName = prompt('Wpisz nazwę kolumny');
         activateTooltip ();
         $.ajax({
+            headers: myHeaders,
     		url: baseUrl + '/column',
     		method: 'POST',
     		data: {

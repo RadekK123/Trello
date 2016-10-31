@@ -6,6 +6,7 @@ var myHeaders = {
 };
 
 $.ajax({
+    headers: myHeaders,
     url: baseUrl + '/board',
     method: 'GET',
     success: function(response) {

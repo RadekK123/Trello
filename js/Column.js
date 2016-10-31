@@ -19,12 +19,14 @@ function Column (id, name) {
 			'data-toggle' : 'tooltip',
 			'data-placement' :'top',
 			title: 'Dodaj kartę' }).text('+');
+
 		
-		columnAddCard.click(function(event) {
+		$columnAddCard.click(function(event) {
 			var cardName = prompt("Wpisz nazwę karty");
 			event.preventDefault();
 			activateTooltip();
 			$.ajax({
+				headers: myHeaders,
 			    url: baseUrl + '/card',
 			    method: 'POST',
 			    data: {
@@ -45,8 +47,8 @@ function Column (id, name) {
 
 		return $column;
 	}
-
 }
+
 
 Column.prototype = {
 	addCard: function(card) {
