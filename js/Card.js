@@ -5,7 +5,7 @@ function Card(id, name) {
 	this.id = id;
 	this.name = name || 'Nie podano nazwy';
 	this.$element = createCard();
-
+}
 	function createCard () {
 		var $card = $('<li>').addClass('card');
 
@@ -27,7 +27,7 @@ function Card(id, name) {
 			.append($cardDescription);
 		return $card;
 	}
-}
+
 
 Card.prototype = {
 	removeCard: function() {

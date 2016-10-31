@@ -3,7 +3,7 @@ function Column (id, name) {
 	this.id = id;
 	this.name = name || 'Nie podano nazwy';
 	this.$element = createColumn();
-
+}
 	function createColumn() {
 		var $column = $('<div>').addClass('column');
 		var $columnTitle = $('<h2>').addClass('column-title').text(self.name);
@@ -47,7 +47,7 @@ function Column (id, name) {
 
 		return $column;
 	}
-}
+
 
 
 Column.prototype = {
