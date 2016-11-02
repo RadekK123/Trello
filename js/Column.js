@@ -1,18 +1,25 @@
 function Column (id, name) {
+
 	var self = this;
 	this.id = id;
 	this.name = name || 'Nie podano nazwy';
 	this.$element = createColumn();
-}
+
 	function createColumn() {
 		var $column = $('<div>').addClass('column');
 		var $columnTitle = $('<h2>').addClass('column-title').text(self.name);
 		var $columnCardList = $('<ul>').addClass('column-card-list');
+
 		var $columnDelete = $('<button>').addClass('btn-delete').attr({
 
 			'data-toggle' : 'tooltip',
 			'data-placement' :'top',
 			title: 'Usuń kolumnę' }).text('x');
+
+		$columnDelete.click(function () {
+			self.deleteColumn();
+			
+		});
 
 		var $columnAddCard = $('<button>').addClass('add-card').attr({
 
@@ -35,7 +42,7 @@ function Column (id, name) {
     			},
 			    success: function(response) {
 			        var card = new Card(response.id, cardName);
-			        self.createCard(card);
+			        self.addCard(card);
     			}
 			});
 		});
@@ -47,21 +54,22 @@ function Column (id, name) {
 
 		return $column;
 	}
-
-
+}
 
 Column.prototype = {
 	addCard: function(card) {
 		this.$element.children('ul').append(card.$element);
+		activateTooltip ();
 	},
 
 	deleteColumn: function() {
-	    var self = this;
-	    $.ajax({
-	      url: baseUrl + '/column/' + self.id,
-	      method: 'DELETE',
-	      success: function(response){
-	        self.element.remove();
+	   		var self = this;
+	  	    $.ajax({
+			headers: myHeaders,
+	      	url: baseUrl + '/column/' + self.id,
+	      	method: 'DELETE',
+	      	success: function(response){
+	        self.$element.remove();
 	      }
 	    });
  	}
